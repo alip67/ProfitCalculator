@@ -31,30 +31,48 @@ public class XmlToJava {
             Deposits depositData = (Deposits) jaxbUnmarshaller.unmarshal(file);
 
             DataStructureDeposit dsd = new DataStructureDeposit();
+            List<Deposit> list = depositData.getDeposit();
+            for(Deposit deposit: list){
+                dsd.setCustomerNumber(deposit.getCustomerNumber());
 
-            dsd.setCustomerNumber(depositData.deposit.getCustomerNumber());
+                dsd.setDepositBalance(deposit.getDepositBalance());
 
-            dsd.setDepositBalance(depositData.deposit.getDepositBalance());
+                dsd.setDurationInDays(deposit.getDurationInDays());
 
-            dsd.setDurationInDays(depositData.deposit.getDurationInDays());
+                dsd.setDepositType(deposit.getDepositType());
+                    U.wl("salay");
+                    U.wl(""+deposit.getCustomerNumber());
+                    U.wl(""+deposit.getDepositBalance());
+                    U.wl(""+deposit.getDepositType());
+                    U.wl(""+deposit.getDurationInDays());
+                U.wl("salay salay");
+                dsdTemp = dsd;
+                lisDeposit.add(dsdTemp);
+            }
 
-            dsd.setDepositType(depositData.deposit.getDepositType());
 
-            dsdTemp = dsd;
-            lisDeposit.add(dsdTemp);
+//            dsd.setCustomerNumber(depositData.deposit.getCustomerNumber());
+//
+//            dsd.setDepositBalance(depositData.deposit.getDepositBalance());
+//
+//            dsd.setDurationInDays(depositData.deposit.getDurationInDays());
+//
+//            dsd.setDepositType(depositData.deposit.getDepositType());
+
 
 
 
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-
-        for (DataStructureDeposit aa : lisDeposit){
-            U.wl(""+aa.getCustomerNumber());
-            U.wl(""+aa.getDepositBalance());
-            U.wl(""+aa.getDepositType());
-            U.wl(""+aa.getDurationInDays());
-        }
+//        U.wl("moshkel?");
+//        for (DataStructureDeposit aa : lisDeposit){
+//            U.wl(""+aa.getCustomerNumber());
+//            U.wl(""+aa.getDepositBalance());
+//            U.wl(""+aa.getDepositType());
+//            U.wl(""+aa.getDurationInDays());
+//        }
+//        U.wl("baleeeeeeeeeeeeeee");
 
 
         return lisDeposit;
