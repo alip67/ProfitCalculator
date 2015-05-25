@@ -7,18 +7,18 @@ import java.util.List;
 
 @XmlType(propOrder = {"customerNumber", "depositType", "depositBalance", "durationInDays", "depositConfig"})
 public class DepositConfig {
-    Integer customerNumber;
+    String customerNumber;
     String depositType;
     BigDecimal depositBalance;
     Integer durationInDays;
     List<DepositConfig> depositConfig;
 
 
-    public Integer getCustomerNumber() {
+    public String getCustomerNumber() {
         return customerNumber;
     }
 
-    public void setCustomerNumber(Integer customerNumber) {
+    public void setCustomerNumber(String customerNumber) {
         this.customerNumber = customerNumber;
     }
 

@@ -7,28 +7,27 @@ import java.math.BigDecimal;
 /**
  * @author Maral Khojasteh
  */
-public abstract class Deposit {
-    protected Integer customerNumber;
+public class Deposit {
+    protected String customerNumber;
     protected BigDecimal depositBalance;
-    protected  Integer durationInDays;
-    protected String depositType;
+    protected Integer durationInDays;
+    protected DepositType depositType;
 
-    public Deposit(){
+    public Deposit() {
         U.wl("constructor");
     }
-
-    public Deposit(Integer customerNumber,BigDecimal depositBalance, Integer durationInDays, String depositType){
+    public Deposit(String customerNumber, BigDecimal depositBalance, Integer durationInDays, DepositType depositType) {
         this.customerNumber = customerNumber;
         this.depositBalance = depositBalance;
         this.durationInDays = durationInDays;
         this.depositType = depositType;
     }
 
-    public Integer getCustomerNumber() {
+    public String getCustomerNumber() {
         return customerNumber;
     }
 
-    public void setCustomerNumber(Integer customerNumber) {
+    public void setCustomerNumber(String customerNumber) {
         this.customerNumber = customerNumber;
     }
 
@@ -48,15 +47,17 @@ public abstract class Deposit {
         this.durationInDays = durationInDays;
     }
 
-    public String getDepositType() {
+    public DepositType getDepositType() {
         return depositType;
     }
 
-    public void setDepositType(String depositType) {
+    public void setDepositType(DepositType depositType) {
         this.depositType = depositType;
     }
 
-    abstract public BigDecimal calc(Integer ir, BigDecimal db, Integer dd);
-
-
+    public BigDecimal calculateProfit(Integer Ir, BigDecimal Db, Integer Dd) {
+        BigDecimal pi = BigDecimal.ZERO;
+        pi = Db.multiply(new BigDecimal(Ir * Dd)).divide(new BigDecimal(36500));
+        return pi;
+    }
 }

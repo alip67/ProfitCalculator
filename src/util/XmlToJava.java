@@ -7,6 +7,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
 public class XmlToJava {
 
 
-    public static List<DataStructureDeposit> getXmlData() {
+    public static  List<DataStructureDeposit> getXmlData() {
         List<DataStructureDeposit> lisDeposit = new ArrayList<DataStructureDeposit>();
         try {
             File file = new File(".\\file.xml");
@@ -23,10 +24,11 @@ public class XmlToJava {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             DepositsConfig depositData = (DepositsConfig) jaxbUnmarshaller.unmarshal(file);
             DataStructureDeposit dsd = new DataStructureDeposit();
-            dsd.customerNumber = depositData.depositconfig.getCustomerNumber();
-            dsd.depositBalance = depositData.depositconfig.getDepositBalance();
-            dsd.durationInDays = depositData.depositconfig.getDurationInDays();
-            dsd.depositType = depositData.depositconfig.getDepositType();
+
+            dsd.setCustomerNumber(depositData.depositconfig.getCustomerNumber());
+            dsd.setDepositBalance(depositData.depositconfig.getDepositBalance());
+            dsd.setDurationInDays(depositData.depositconfig.getDurationInDays());
+            dsd.setDepositType(depositData.depositconfig.getDepositType());
             lisDeposit.add(dsd);
 
 
@@ -34,5 +36,10 @@ public class XmlToJava {
             e.printStackTrace();
         }
         return lisDeposit;
+    }
+
+    public static List<String> example(){
+        List<String> messages = Arrays.asList("Hello", "World!", "How", "Are", "You");
+        return  messages;
     }
 }
