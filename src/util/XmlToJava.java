@@ -15,7 +15,7 @@ import java.util.List;
 public class XmlToJava {
 
 
-    public static  List<DataStructureDeposit> getXmlData() {
+    public static List<DataStructureDeposit> getXmlData() {
 
         List<DataStructureDeposit> lisDeposit = new ArrayList<DataStructureDeposit>();
         DataStructureDeposit dsdTemp = new DataStructureDeposit();
@@ -30,9 +30,10 @@ public class XmlToJava {
 
             Deposits depositData = (Deposits) jaxbUnmarshaller.unmarshal(file);
 
-            DataStructureDeposit dsd = new DataStructureDeposit();
+
             List<Deposit> list = depositData.getDeposit();
-            for(Deposit deposit: list){
+            for (Deposit deposit : list) {
+                DataStructureDeposit dsd = new DataStructureDeposit();
                 dsd.setCustomerNumber(deposit.getCustomerNumber());
 
                 dsd.setDepositBalance(deposit.getDepositBalance());
@@ -40,24 +41,22 @@ public class XmlToJava {
                 dsd.setDurationInDays(deposit.getDurationInDays());
 
                 dsd.setDepositType(deposit.getDepositType());
-                    U.wl("salay");
-                    U.wl(""+deposit.getCustomerNumber());
-                    U.wl(""+deposit.getDepositBalance());
-                    U.wl(""+deposit.getDepositType());
-                    U.wl(""+deposit.getDurationInDays());
-                U.wl("salay salay");
-                dsdTemp = dsd;
-                lisDeposit.add(dsdTemp);
+//                U.wl("salay");
+//                U.wl("" + deposit.getCustomerNumber());
+//                U.wl("" + deposit.getDepositBalance());
+//                U.wl("" + deposit.getDepositType());
+//                U.wl("" + deposit.getDurationInDays());
+//                U.wl("salay salay");
+//                U.wl("dsdporshod");
+//                U.wl("" + dsd.getCustomerNumber());
+//                U.wl("" + dsd.getDepositBalance());
+//                U.wl("" + dsd.getDepositType());
+//                U.wl("" + dsd.getDurationInDays());
+//                U.wl("ojojojojojoj");
+
+                lisDeposit.add(dsd);
             }
 
-
-//            dsd.setCustomerNumber(depositData.deposit.getCustomerNumber());
-//
-//            dsd.setDepositBalance(depositData.deposit.getDepositBalance());
-//
-//            dsd.setDurationInDays(depositData.deposit.getDurationInDays());
-//
-//            dsd.setDepositType(depositData.deposit.getDepositType());
 
 
 
@@ -65,12 +64,14 @@ public class XmlToJava {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-//        U.wl("moshkel?");
+
 //        for (DataStructureDeposit aa : lisDeposit){
+//            U.wl("moshkel?");
 //            U.wl(""+aa.getCustomerNumber());
 //            U.wl(""+aa.getDepositBalance());
 //            U.wl(""+aa.getDepositType());
 //            U.wl(""+aa.getDurationInDays());
+//            U.wl("ahaaaaaaaaaaaaaaaaaaa");
 //        }
 //        U.wl("baleeeeeeeeeeeeeee");
 
@@ -79,7 +80,6 @@ public class XmlToJava {
 
 
     }
-
 
 
 }

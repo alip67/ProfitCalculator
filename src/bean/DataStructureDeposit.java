@@ -11,6 +11,16 @@ public class DataStructureDeposit {
     public Integer durationInDays;
     public String depositType;
 
+    public DataStructureDeposit() {
+    }
+
+    public DataStructureDeposit(String customerNumber, BigDecimal depositBalance, Integer durationInDays, String depositType) {
+        this.customerNumber = customerNumber;
+        this.depositBalance = depositBalance;
+        this.durationInDays = durationInDays;
+        this.depositType = depositType;
+    }
+
     public String getCustomerNumber() {
         return customerNumber;
     }

@@ -6,8 +6,7 @@ import util.SortByComparator;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Maral Khojasteh
@@ -26,20 +25,36 @@ public class Main {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+//        for (Map.Entry<String, BigDecimal> entry : unsortedOutput.entrySet())
+//            System.out.println("[Key] : " + entry.getKey()
+//                    + " [Value] : " + entry.getValue());
+
 
         sortedOutput = SortByComparator.sortByComparator(unsortedOutput);
+//        for (Map.Entry<String, BigDecimal> entry : sortedOutput.entrySet())
+//            System.out.println("[Key] : " + entry.getKey()
+//                    + " [Value] : " + entry.getValue());
 
-
+        List<String> ls = new ArrayList<String>();
         for (Map.Entry<String, BigDecimal> entry : sortedOutput.entrySet()) {
-            String outputDisplay = String.format("%s#%s", entry.getKey(), entry.getValue());
-            RandomAccessFile file = new RandomAccessFile(filePath, "rw");
-            file.writeBytes(outputDisplay);
-//            String newLine = "\n","\r\n";
-//            file.writeBytes(newLine);
-            file.close();
+
+
+            String outputDisplay = entry.getKey().toString() + "#" + entry.getValue().toString();
+            ls.add(outputDisplay);
+
         }
 
+        RandomAccessFile file = new RandomAccessFile(filePath, "rw");
+        Iterator<String> outputIterator = ls.iterator();
+        while (outputIterator.hasNext()) {
+            file.writeBytes(outputIterator.next().toString() + "\n");
+        }
+        file.close();
 
+
+
+
+//ِ
     }
 
 //    private static Long writeToFile(String filePath, String data, int position) throws IOException {

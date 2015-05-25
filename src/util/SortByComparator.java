@@ -18,7 +18,7 @@ public class SortByComparator {
         Collections.sort(list, new Comparator<Map.Entry<String, BigDecimal>>() {
             public int compare(Map.Entry<String, BigDecimal> o1,
                                Map.Entry<String, BigDecimal> o2) {
-                return (o2.getValue()).compareTo(o1.getValue());
+                return (o1.getValue()).compareTo(o2.getValue());
             }
         });
 
