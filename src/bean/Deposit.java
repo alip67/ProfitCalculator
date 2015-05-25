@@ -3,6 +3,7 @@ package bean;
 import util.U;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * @author Maral Khojasteh
@@ -16,6 +17,7 @@ public class Deposit {
     public Deposit() {
         U.wl("constructor");
     }
+
     public Deposit(String customerNumber, BigDecimal depositBalance, Integer durationInDays, DepositType depositType) {
         this.customerNumber = customerNumber;
         this.depositBalance = depositBalance;
@@ -55,9 +57,12 @@ public class Deposit {
         this.depositType = depositType;
     }
 
-    public BigDecimal calculateProfit(Integer Ir, BigDecimal Db, Integer Dd) {
+    public BigDecimal calculateProfit(Double interestRate, BigDecimal depositBalance, Integer durationInDays) {
         BigDecimal pi = BigDecimal.ZERO;
-        pi = Db.multiply(new BigDecimal(Ir * Dd)).divide(new BigDecimal(36500));
+        pi = depositBalance.multiply(new BigDecimal(interestRate * durationInDays)).divide(new BigDecimal(36500), 3, RoundingMode.CEILING);
         return pi;
     }
+
+
+
 }

@@ -1,17 +1,17 @@
 package util;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.XmlType;
 import java.math.BigDecimal;
 import java.util.List;
 
-@XmlType(propOrder = {"customerNumber", "depositType", "depositBalance", "durationInDays", "depositConfig"})
-public class DepositConfig {
+@XmlType(propOrder = {"customerNumber", "depositType", "depositBalance", "durationInDays", "deposit"})
+public class Deposit {
     String customerNumber;
     String depositType;
     BigDecimal depositBalance;
     Integer durationInDays;
-    List<DepositConfig> depositConfig;
+    List<Deposit> deposit;
 
 
     public String getCustomerNumber() {
@@ -47,12 +47,12 @@ public class DepositConfig {
     }
 
     @XmlElement(name = "deposit")
-    public List<DepositConfig> getDepositConfig() {
-        return depositConfig;
+    public List<Deposit> getDeposit() {
+        return deposit;
     }
 
-    public void setDepositConfig(List<DepositConfig> depositConfig) {
-        this.depositConfig = depositConfig;
+    public void setDeposit(List<Deposit> deposit) {
+        this.deposit = deposit;
     }
 
 

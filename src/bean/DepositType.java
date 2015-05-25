@@ -3,14 +3,14 @@ package bean;
 /**
  * @author Maral Khojasteh
  */
-public class DepositType {
-    protected Integer interestRate;
+public abstract class DepositType {
+    protected Double interestRate;
 
-    public Integer getInterestRate() {
+    public Double getInterestRate() {
         return interestRate;
     }
 
-    public void setInterestRate(Integer interestRate) {
+    public void setInterestRate(Double interestRate) {
         this.interestRate = interestRate;
     }
 }

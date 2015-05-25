@@ -6,10 +6,9 @@ package bean;
 public class ShortTerm extends DepositType {
 
 
-
     public ShortTerm() {
 
-        this.interestRate = 10;
+        this.interestRate = Double.valueOf(10);
 
     }
 

@@ -6,10 +6,9 @@ package bean;
 public class LongTerm extends DepositType {
 
 
-
     public LongTerm() {
 
-        this.interestRate = 20;
+        this.interestRate = Double.valueOf(20);
     }
 
 

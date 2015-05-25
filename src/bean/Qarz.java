@@ -6,9 +6,8 @@ package bean;
 public class Qarz extends DepositType {
 
 
-
     public Qarz() {
-        this.interestRate = 0;
+        this.interestRate = Double.valueOf(0);
 
     }
 
