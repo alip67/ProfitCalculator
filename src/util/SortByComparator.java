@@ -24,7 +24,7 @@ public class SortByComparator {
 
         // Convert sorted map back to a Map
         Map<String, BigDecimal> sortedMap = new LinkedHashMap<String, BigDecimal>();
-        for (Iterator<Map.Entry<String, BigDecimal>> it = list.iterator(); it.hasNext();) {
+        for (Iterator<Map.Entry<String, BigDecimal>> it = list.iterator(); it.hasNext(); ) {
             Map.Entry<String, BigDecimal> entry = it.next();
             sortedMap.put(entry.getKey(), entry.getValue());
         }

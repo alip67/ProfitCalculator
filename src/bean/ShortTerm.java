@@ -8,7 +8,7 @@ public class ShortTerm extends DepositType {
 
     public ShortTerm() {
 
-        this.interestRate = Double.valueOf(10);
+        this.interestRate = (double) 10;
 
     }
 

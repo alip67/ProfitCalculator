@@ -3,14 +3,12 @@ package util;
 import javax.xml.bind.annotation.XmlType;
 import java.math.BigDecimal;
 
-@XmlType(propOrder = {"customerNumber", "depositType", "depositBalance", "durationInDays", })
+@XmlType(propOrder = {"customerNumber", "depositType", "depositBalance", "durationInDays",})
 public class Deposit {
     String customerNumber;
     String depositType;
     BigDecimal depositBalance;
     Integer durationInDays;
-//    List<Deposit> deposit;
-
 
     public String getCustomerNumber() {
         return customerNumber;
@@ -44,18 +42,4 @@ public class Deposit {
         this.durationInDays = durationInDays;
     }
 
-//    @XmlElement(name = "deposit")
-//    public List<Deposit> getDeposit() {
-//        return deposit;
-//    }
-//
-//    public void setDeposit(List<Deposit> deposit) {
-//        this.deposit = deposit;
-//    }
-
-
 }
-
-
-
-

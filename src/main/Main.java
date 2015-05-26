@@ -1,23 +1,20 @@
 package main;
 
 import bean.DepositMapper;
-import util.SortByComparator;
+import bean.DepositStructure;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.math.BigDecimal;
 import java.util.*;
 
-/**
- * @author Maral Khojasteh
- */
 public class Main {
 
     static final String filePath = "src/file1.txt";
 
     public static void main(String args[]) throws ClassNotFoundException, IOException {
-        Map<String, BigDecimal> unsortedOutput = new HashMap<String, BigDecimal>();
-        Map<String, BigDecimal> sortedOutput = new HashMap<String, BigDecimal>();
+        List<DepositStructure> unsortedOutput = new ArrayList<DepositStructure>();
+       Map<String, BigDecimal> sortedOutput = new HashMap<String, BigDecimal>();
         DepositMapper depositMapperOutput = new DepositMapper();
         try {
             unsortedOutput = depositMapperOutput.depositMapper();
@@ -25,16 +22,12 @@ public class Main {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-//        for (Map.Entry<String, BigDecimal> entry : unsortedOutput.entrySet())
-//            System.out.println("[Key] : " + entry.getKey()
-//                    + " [Value] : " + entry.getValue());
 
+       Collections.sort(unsortedOutput);
 
-        sortedOutput = SortByComparator.sortByComparator(unsortedOutput);
-//        for (Map.Entry<String, BigDecimal> entry : sortedOutput.entrySet())
-//            System.out.println("[Key] : " + entry.getKey()
-//                    + " [Value] : " + entry.getValue());
-
+        for (DepositStructure depositStructure : unsortedOutput){
+            sortedOutput.put(depositStructure.getCustomerNumber(),depositStructure.getPayedInterest());
+        }
         List<String> ls = new ArrayList<String>();
         for (Map.Entry<String, BigDecimal> entry : sortedOutput.entrySet()) {
 
@@ -47,24 +40,13 @@ public class Main {
         RandomAccessFile file = new RandomAccessFile(filePath, "rw");
         Iterator<String> outputIterator = ls.iterator();
         while (outputIterator.hasNext()) {
-            file.writeBytes(outputIterator.next().toString() + "\n");
+            String newLine = System.getProperty("line.separator");
+            file.writeBytes(newLine+outputIterator.next().toString() + newLine);
         }
         file.close();
 
 
-
-
-//ِ
     }
 
-//    private static Long writeToFile(String filePath, String data, int position) throws IOException {
-//        RandomAccessFile file = new RandomAccessFile(filePath, "rw");
-//        file.seek(position);
-//        file.write(data.getBytes());
-//        Long pointer = file.getFilePointer();
-//        file.close();
-//        return pointer;
-//
-//    }
 
 }

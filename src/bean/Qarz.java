@@ -7,7 +7,7 @@ public class Qarz extends DepositType {
 
 
     public Qarz() {
-        this.interestRate = Double.valueOf(0);
+        this.interestRate = (double) 0;
 
     }
 
